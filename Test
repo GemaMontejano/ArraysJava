@@ -1,0 +1,37 @@
+package EjercicioArrays;
+
+public class testEjer {
+
+	public static void main(String[] args) {
+		Alumno myAlumno = new Alumno("María", 4);
+		System.out.println(myAlumno.getNombre());
+		System.out.println(myAlumno.getNota());
+		Alumno myAlumno2 = new Alumno("Alberto", 6.5);
+		System.out.println(myAlumno2.getNombre());
+		System.out.println(myAlumno2.getNota());
+		myAlumno.setNombre("Laura");
+		myAlumno.setNota(10);
+		System.out.println(myAlumno.getNombre());
+		System.out.println(myAlumno.getNota());
+		Aula myAula = new Aula(5);
+		myAula.addAlumno("María", 4);
+		myAula.addAlumno("Alberto", 6.5);
+		myAula.addAlumno("Laura", 9);
+		myAula.addAlumno("Sara", 3.5);
+		myAula.addAlumno("Salvador", 5);
+		System.out.println(myAula.addAlumno("Juan", 8.3));
+		System.out.println(myAula.media());
+		Alumno[] aprobados = myAula.aprobados();
+		Alumno[] suspendidos = myAula.suspendidos();
+		Alumno mejor = myAula.mejor();
+		Alumno peor = myAula.peor();
+		System.out.println("Alumnos aprobados:");
+		for (Alumno x : aprobados)
+			System.out.println(x.getNombre() + " " + x.getNota());
+		System.out.println("Alumnos suspendidos:");
+		for (Alumno x : suspendidos)
+			System.out.println(x.getNombre() + " " + x.getNota());
+		System.out.println("El mejor alumno es: " + mejor.getNombre() + " " + mejor.getNota());
+		System.out.println("El peor alumno es: " + peor.getNombre() + " " + peor.getNota());
+	}
+}
