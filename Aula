@@ -1,0 +1,95 @@
+package EjercicioArrays;
+
+public class Aula {
+
+	private Alumno[] myArray;
+	int cont = 0;
+
+	public Aula(int numero) {
+		myArray = new Alumno[numero];
+
+	}
+
+	public int addAlumno(String nombre, double nota) {
+		if (cont < myArray.length) {
+			myArray[cont] = new Alumno(nombre, nota);
+			cont++;
+			return cont - 1;
+		}
+		return -1;
+	}
+
+	public double media() {
+		int suma = 0;
+		for (int i = 0; i < cont; i++) {
+			suma += myArray[i].getNota();
+		}
+		if (cont == 0) {
+			return -1;
+		} else {
+			return suma / cont;
+		}
+	}
+
+	public Alumno[] aprobados() {
+		int numAprobados = 0;
+		for (int i = 0; i < cont; i++) {
+			if (myArray[i].getNota() >= 5) {
+				numAprobados++;
+			}
+		}
+		Alumno[] array = new Alumno[numAprobados];
+		int tmp = 0;
+		for (int i = 0; i < cont; i++) {
+			if (myArray[i].getNota() >= 5) {
+				array[tmp] = myArray[i];
+				tmp++;
+			}
+		}
+		return array;
+	}
+
+	public Alumno[] suspendidos() {
+		int numSuspendidos = 0;
+		for (int i = 0; i < cont; i++) {
+			if (myArray[i].getNota() < 5) {
+				numSuspendidos++;
+			}
+		}
+		Alumno[] array = new Alumno[numSuspendidos];
+		int tmp = 0;
+		for (int i = 0; i < cont; i++) {
+			if (myArray[i].getNota() < 5) {
+				array[tmp] = myArray[i];
+				tmp++;
+			}
+		}
+		return array;
+	}
+
+	public Alumno mejor() {
+		if (cont == 0) {
+			return null;
+		}
+		Alumno x = myArray[0];
+		for (int i = 1; i < cont; i++) {
+			if (myArray[i].getNota() > x.getNota()) {
+				x = myArray[i];
+			}
+		}
+		return x;
+	}
+
+	public Alumno peor() {
+		if (cont == 0) {
+			return null;
+		}
+		Alumno x = myArray[0];
+		for (int i = 1; i < cont; i++) {
+			if (myArray[i].getNota() < x.getNota()) {
+				x = myArray[i];
+			}
+		}
+		return x;
+	}
+}
